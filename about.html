@@ -5,13 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - João Pedro | About</title>
-    <link rel="stylesheet" href="./css/about.css">
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
+    <meta name="theme-color" content="#ff5c5c">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 
-<body>
+<body class="dark-theme">
+    <div class="aurora-bg" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="background-header">
         <div class="header">
             <a href="index.html" class="nome">
@@ -35,42 +45,94 @@
     </div>
 
     <div class="background-text">
-        <div class="title-container">
-            <h1 class="title">
-                <span class="lang-en">About Me</span>
-                <span class="lang-pt" style="display: none;">Sobre Mim</span>
-            </h1>
-        </div>
-        <div class="subtitle-container">
-            <p class="subtitle">
-                <span class="lang-en">My name is João Pedro! I'm a Digital Designer who combines creativity and code. I
-                    create intuitive interfaces and immersive web experiences with a focus on usability and visual
-                    impact.</span>
-                <span class="lang-pt" style="display: none;">Meu nome é João Pedro! Sou um Designer Digital que une
-                    criatividade e código. Crio interfaces intuitivas e experiências web imersivas com foco em
-                    usabilidade e impacto visual.</span>
-            </p>
+        <div class="about-card glass" data-reveal>
+            <div class="title-container">
+                <h1 class="title">
+                    <span class="lang-en">About Me</span>
+                    <span class="lang-pt" style="display: none;">Sobre Mim</span>
+                </h1>
+            </div>
+            <div class="subtitle-container">
+                <p class="subtitle">
+                    <span class="lang-en">My name is João Pedro! I'm a Digital Designer who combines creativity and
+                        code. I
+                        create intuitive interfaces and immersive web experiences with a focus on usability and
+                        visual
+                        impact.</span>
+                    <span class="lang-pt" style="display: none;">Meu nome é João Pedro! Sou um Designer Digital que
+                        une
+                        criatividade e código. Crio interfaces intuitivas e experiências web imersivas com foco em
+                        usabilidade e impacto visual.</span>
+                </p>
+            </div>
+
+            <div class="quote-container">
+                <p class="quote">
+                    <span class="lang-en">"Design is intelligence made visible."</span>
+                    <span class="lang-pt" style="display: none;">"Design é inteligência tornada visível."</span>
+                </p>
+                <p class="author">— Alina Wheeler</p>
+            </div>
+
+            <a href="contact.html" class="btn-pill">
+                <span class="lang-en">Contact Me</span>
+                <span class="lang-pt" style="display: none;">Contate-me</span>
+                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
         </div>
 
-        <div class="quote-container">
-            <p class="quote">
-                <span class="lang-en">"Design is intelligence made visible."</span>
-                <span class="lang-pt" style="display: none;">"Design é inteligência tornada visível."</span>
-            </p>
-            <p class="author">— Alina Wheeler</p>
-        </div>
+        <div class="experience-card glass" data-reveal>
+            <h2 class="section-title">
+                <span class="lang-en">Experience</span>
+                <span class="lang-pt" style="display: none;">Experiência</span>
+            </h2>
 
-        <div class="arrow-bottom">↓</div>
-        <div class="contatoContainer">
-            <p class="contato">
-                <a href="contact.html">
-                    <span class="lang-en">Contact Me</span>
-                    <span class="lang-pt" style="display: none;">Contate-me</span>
-                </a>
-            </p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="timeline-role">
+                        <span class="lang-en">Jr Development Analyst</span>
+                        <span class="lang-pt" style="display: none;">Analista de Desenvolvimento Jr</span>
+                    </h3>
+                    <p class="timeline-meta">
+                        Flowbix ·
+                        <span class="lang-en">Jan 2026 – Present</span>
+                        <span class="lang-pt" style="display: none;">Jan 2026 – o momento</span>
+                    </p>
+                    <p class="timeline-desc">
+                        <span class="lang-en">Front-end development focused on monitoring, observability and
+                            interactive dashboards. Today I'm responsible for several Grafana dashboards and their
+                            standardization.</span>
+                        <span class="lang-pt" style="display: none;">Atuação no desenvolvimento de soluções
+                            Front-End, com foco em monitoramento, observabilidade e construção de dashboards
+                            interativos. Hoje sou responsável por diversos dashboards no Grafana e pela
+                            padronização deles.</span>
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-role">
+                        <span class="lang-en">Front-End Developer — Intern</span>
+                        <span class="lang-pt" style="display: none;">Desenvolvedor Front-End — Estagiário</span>
+                    </h3>
+                    <p class="timeline-meta">
+                        Flowbix ·
+                        <span class="lang-en">Aug 2024 – Jan 2026</span>
+                        <span class="lang-pt" style="display: none;">Ago 2024 – Jan 2026</span>
+                    </p>
+                    <p class="timeline-desc">
+                        <span class="lang-en">Supported the creation and customization of interfaces and dashboards
+                            for infrastructure monitoring and business intelligence — my first contact with Grafana
+                            projects.</span>
+                        <span class="lang-pt" style="display: none;">Apoio na criação e customização de interfaces e
+                            dashboards para monitoramento de infraestrutura e inteligência de negócios — primeiro
+                            contato com projetos em Grafana.</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="JavaScriptAbout.js"></script>
+
+    <script src="JavaScriptMain.js"></script>
 </body>
 
 </html>

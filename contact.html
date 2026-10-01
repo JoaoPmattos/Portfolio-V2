@@ -5,14 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - João Pedro | Contact</title>
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
+    <meta name="theme-color" content="#ff5c5c">
 
-    <link rel="stylesheet" href="./css/contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/contact.css">
 </head>
 
-<body>
+<body class="dark-theme">
+    <div class="aurora-bg" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="background-header">
         <div class="header">
             <a href="index.html" class="nome">
@@ -51,54 +61,69 @@
     </div>
 
     <div class="background-text">
-        <div class="title-container">
-            <h1 class="title">
-                <span class="lang-en">Contact Me</span>
-                <span class="lang-pt" style="display: none;">Entre em Contato</span>
-            </h1>
+        <div class="contact-card glass" data-reveal>
+            <div class="title-container">
+                <h1 class="title">
+                    <span class="lang-en">Contact Me</span>
+                    <span class="lang-pt" style="display: none;">Entre em Contato</span>
+                </h1>
 
-            <div class="texto">
+                <div class="texto">
+                    <p>
+                        <span class="lang-en">
+                            Driven by a passion for technology and continuous learning. I am ready to deliver
+                            high-quality
+                            web solutions and add real value to your team. Let's connect and build something
+                            impactful.
+                        </span>
+                        <span class="lang-pt" style="display: none;">
+                            Movido pela paixão por tecnologia e aprendizado contínuo. Estou pronto para entregar
+                            soluções
+                            web de alta qualidade e agregar valor real à sua equipe. Vamos nos conectar e construir
+                            algo
+                            impactante.
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="textoSocial">
                 <p>
-                    <span class="lang-en">
-                        Driven by a passion for technology and continuous learning. I am ready to deliver high-quality
-                        web solutions and add real value to your team. Let's connect and build something impactful.
-                    </span>
-                    <span class="lang-pt" style="display: none;">
-                        Movido pela paixão por tecnologia e aprendizado contínuo. Estou pronto para entregar soluções
-                        web de alta qualidade e agregar valor real à sua equipe. Vamos nos conectar e construir algo
-                        impactante.
-                    </span>
+                    <span class="lang-en">Check my Socials</span>
+                    <span class="lang-pt" style="display: none;">Minhas Redes</span>
                 </p>
             </div>
-        </div>
 
-        <div class="textoSocial">
-            <p>
-                <span class="lang-en">Check my Socials</span>
-                <span class="lang-pt" style="display: none;">Minhas Redes</span>
-            </p>
-            <span class="arrow-down">↓</span>
-        </div>
-
-        <div class="contact-container">
             <div class="icons-container">
-                <a href="mailto:joaopedro272004@hotmail.com" target="_blank" class="icon-link">
-                    <img src="./icons/email.svg" alt="Email" class="contact-icon">
-                </a>
-                <a href="https://wa.me/5516997639135" target="_blank" class="icon-link">
-                    <img src="./icons/whatsapp.svg" alt="WhatsApp" class="contact-icon">
-                </a>
-                <a href="https://github.com/JoaoPmattos" target="_blank" class="icon-link">
-                    <img src="./icons/github.svg" alt="GitHub" class="contact-icon">
-                </a>
-                <a href="https://www.linkedin.com/in/jo%C3%A3opereiraa/" target="_blank" class="icon-link">
-                    <img src="./icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
-                </a>
+                <div class="icon-group">
+                    <a href="mailto:joaopedro272004@hotmail.com" target="_blank" class="icon-link">
+                        <img src="./icons/email.svg" alt="Email" class="contact-icon">
+                    </a>
+                    <span class="icon-label">Email</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://wa.me/5516997639135" target="_blank" class="icon-link">
+                        <img src="./icons/whatsapp.svg" alt="WhatsApp" class="contact-icon">
+                    </a>
+                    <span class="icon-label">WhatsApp</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://github.com/JoaoPmattos?tab=repositories" target="_blank" class="icon-link">
+                        <img src="./icons/github.svg" alt="GitHub" class="contact-icon">
+                    </a>
+                    <span class="icon-label">GitHub</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://www.linkedin.com/in/jo%C3%A3opereiraa/" target="_blank" class="icon-link">
+                        <img src="./icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
+                    </a>
+                    <span class="icon-label">LinkedIn</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="JavaScriptContact.js"></script>
+    <script src="JavaScriptMain.js"></script>
 </body>
 
 </html>

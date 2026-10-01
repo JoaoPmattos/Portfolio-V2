@@ -1,500 +1,255 @@
-/* =========================================
-   1. RESET E CONFIGURAÇÕES GERAIS
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================================================
+   WORK.CSS
+   Reset, tema, navbar, seção padrão e botão em pílula já vêm
+   do base.css — aqui só o que é específico da página Works:
+   os cards, o carrossel e o modal em tela cheia.
+   ========================================================= */
 
-body,
-html {
-    width: 100%;
-    height: 100%;
-    /* Define o fundo escuro como padrão para evitar o "piscar" branco */
-    background-color: rgb(24, 23, 23);
-    color: white;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    overflow-x: hidden;
-}
-
-/* =========================================
-   2. TEMAS (DARK / LIGHT)
-   ========================================= */
-
-/* --- DARK THEME (Padrão) --- */
-body.dark-theme {
-    background-color: rgb(24, 23, 23);
-    color: white;
-}
-
-body.dark-theme .about h1.active,
-body.dark-theme .nome h1.active {
-    color: white;
-}
-
-body.dark-theme .about h1.active::after,
-body.dark-theme .nome h1.active::after {
-    background-color: white;
-}
-
-body.dark-theme .about h1:hover::after,
-body.dark-theme .nome h1:hover::after {
-    background-color: white;
-    width: 100%;
-    transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-body.dark-theme .header,
-body.dark-theme .background-text {
-    background-color: rgb(24, 23, 23);
-}
-
-body.dark-theme .title,
-body.dark-theme .subtitle {
-    color: white;
-}
-
-/* Botões Circulares no Dark Mode */
-body.dark-theme .language-toggle,
-body.dark-theme .darkmode {
-    color: white;
-    border-color: white;
-}
-
-body.dark-theme .language-toggle:hover,
-body.dark-theme .darkmode:hover {
-    background-color: white;
-    color: rgb(24, 23, 23);
-}
-
-body.dark-theme .darkmode:hover .lua {
-    filter: invert(1);
-}
-
-
-/* --- LIGHT THEME --- */
-body.light-theme {
-    background-color: #D2D2D2;
-    color: black;
-}
-
-body.light-theme .about h1.active,
-body.light-theme .nome h1.active {
-    color: black;
-}
-
-body.light-theme .about h1.active::after,
-body.light-theme .nome h1.active::after {
-    background-color: black;
-}
-
-body.light-theme .about h1:hover::after,
-body.light-theme .nome h1:hover::after {
-    background-color: black;
-    width: 100%;
-    transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-body.light-theme .header,
-body.light-theme .background-text {
-    background-color: #D2D2D2;
-}
-
-body.light-theme .nome,
-body.light-theme .darkmode,
-body.light-theme .title,
-body.light-theme .subtitle,
-body.light-theme .arrow-bottom {
-    color: black;
-}
-
-body.light-theme .work-card {
-    background-color: #181818;
-}
-
-/* Mantém card escuro para contraste */
-body.light-theme .work-description {
-    color: rgb(255, 255, 255);
-}
-
-/* Botões Circulares no Light Mode */
-body.light-theme .language-toggle,
-body.light-theme .darkmode {
-    color: black;
-    border-color: black;
-}
-
-body.light-theme .language-toggle:hover,
-body.light-theme .darkmode:hover {
-    background-color: black;
-    color: white;
-}
-
-body.light-theme .darkmode:hover .lua {
-    filter: invert(1);
-}
-
-
-/* =========================================
-   3. CABEÇALHO E NAVEGAÇÃO
-   ========================================= */
-.header {
-    width: 100%;
-    height: auto;
-    background-color: inherit;
-    /* Herda a cor do tema */
-    display: flex;
-    align-items: center;
-}
-
-.nome {
-    margin-right: auto;
-    padding: 2rem;
-    color: inherit;
-    text-decoration: none;
-    display: flex;
-}
-
-.about {
-    /* Centraliza o menu (truque do margin auto) */
-    position: sticky;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 1rem;
-}
-
-.about h1 a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.about h1,
-.nome h1 {
-    position: relative;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.about h1::after,
-.nome h1::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    /* Cor padrão da linha */
-    transition: width 0.3s ease;
-}
-
-.about h1:hover::after,
-.nome h1:hover::after,
-.about h1.active::after,
-.nome h1.active::after {
-    width: 100%;
-}
-
-.about h1.active,
-.nome h1.active {
-    color: inherit;
-}
-
-/* Container dos Botões de Ação (Idioma/Tema) */
-.actions-container {
-    display: flex;
-    margin-left: auto;
-    align-items: center;
-    gap: 1rem;
-    padding-right: 2rem;
-}
-
-.language-toggle,
-.darkmode {
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid currentColor;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-}
-
-.language-toggle h1 {
-    font-size: 1.2rem;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-}
-
-.lua {
-    width: 1.2rem;
-    height: auto;
-    transition: filter 0.3s ease;
-}
-
-.language-toggle:hover,
-.darkmode:hover {
-    transform: scale(1.1);
-}
-
-
-/* =========================================
-   4. CONTEÚDO PRINCIPAL (WORKS)
-   ========================================= */
 .background-text {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: inherit;
-    padding-bottom: 2rem;
+    justify-content: flex-start;
+    gap: 0;
+    padding-top: 4rem;
 }
 
 .title-container {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .title {
-    font-size: 4.5rem;
-    font-weight: bold;
-    color: inherit;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+}
+
+/* O indicador de scroll fica logo abaixo do título — sempre visível
+   sem precisar rolar a página, que é o objetivo dele */
+.background-text>.scroll-indicator {
+    margin-bottom: 2.5rem;
 }
 
 .works-container {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding: 1rem;
+    padding: 0 1rem;
 }
 
-/* CARDS */
+/* =========================================
+   CARDS
+   ========================================= */
 .work-card {
     width: 100%;
-    max-width: 25%;
-    /* 20% no Desktop */
+    max-width: 22rem;
+    flex: 1 1 20rem;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
-    border-radius: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease,
+        background-color 0.4s ease;
+}
+
+.work-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.work-card:nth-child(3) {
+    animation-delay: 0.3s;
 }
 
 .work-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+    transform: translateY(-0.6rem) scale(1.02);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .work-description {
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     line-height: 1.5;
-    color: white;
+    color: var(--text-color);
 }
 
-/* IMAGENS NO CARROSSEL */
-.carousel img {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 40vh;
-    /* Altura fixa para manter padrão */
-    object-fit: cover;
-    /* Ajusta a imagem sem esticar */
-    display: none;
-    /* JS controla qual aparece */
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+.work-details {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
 
-    /* Garante que o toque não selecione a imagem como texto no mobile */
+/* =========================================
+   CARROSSEL
+   ========================================= */
+.carousel {
+    position: relative;
+    height: clamp(12rem, 32vw, 20rem);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.carousel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1);
+    transition: opacity 0.6s ease, transform 5s ease;
     user-select: none;
     -webkit-user-drag: none;
 }
 
-/* =========================================
-   5. BOTÕES DO CARROSSEL (SETAS)
-   ========================================= */
-.carousel {
-    position: relative;
-    /* Importante para as setas ficarem dentro */
+.carousel img.active {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: zoom-in;
+}
+
+.work-card:hover .carousel img.active {
+    transform: scale(1.09);
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 1.5rem;
-    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.9rem;
     cursor: pointer;
     z-index: 10;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 2.4rem;
+    height: 2.4rem;
     display: flex;
-    /* Flex para centralizar a seta */
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
     opacity: 0;
-    /* Invisível até passar o mouse */
+    transition: background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
 }
 
 .work-card:hover .carousel-btn {
     opacity: 1;
-    /* Aparece no hover (Desktop) */
 }
 
 .carousel-btn:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: black;
+    background: rgba(255, 255, 255, 0.9);
+    color: #181818;
+    box-shadow: 0 0 0.9rem rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.15);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .prev-btn {
-    left: 10px;
+    left: 0.6rem;
 }
 
 .next-btn {
-    right: 10px;
+    right: 0.6rem;
 }
 
+/* Indicadores (dots) */
+.carousel-dots {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 10;
+}
 
-/* =========================================
-   6. BOTÃO "VISIT WEBSITE" (Estilo Pílula)
-   ========================================= */
-.visit-btn {
-    /* Removed display: block based on request, relying on flex item behavior or default */
-    width: 160px;
-    margin: 1.5rem auto 0 auto;
-    padding: 0.6rem 0;
-    border: 2px solid white;
-    border-radius: 50px;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: all 0.3s ease;
+.carousel-dots .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.45);
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.visit-btn:hover {
-    background-color: white;
-    color: rgb(24, 23, 23);
-    transform: translateY(-3px);
+.carousel-dots .dot:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
-/* ESTILO NOVO: BOTÃO ESTÁTICO (SEM LINK) */
-.visit-btn.static-btn {
-    cursor: default;
-    /* Cursor normal, não de clique */
-    pointer-events: none;
-    /* Garante que não haja interação */
+.carousel-dots .dot.active {
+    width: 1.4rem;
+    background: #fff;
+    box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.6);
 }
-
-.visit-btn.static-btn:hover {
-    /* Remove animação de hover */
-    background-color: transparent;
-    color: white;
-    transform: none;
-}
-
 
 /* =========================================
-   7. RODAPÉ E ÍCONES
+   SEÇÃO DE CONTATO (fechamento da página, visualmente separada
+   dos cards — só aparece ao rolar até o final)
    ========================================= */
-.arrow-bottom {
-    position: relative;
-    display: block;
-    margin: 2rem auto 2rem auto;
-    text-align: center;
-    font-size: 2rem;
-    color: inherit;
-    animation: bounce 2s infinite;
-    clear: both;
-}
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.contact-container {
+.works-footer-cta {
     width: 100%;
+    max-width: 40rem;
+    margin: 3rem auto 2rem;
+    padding: clamp(2rem, 5vw, 3rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.icons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    padding-bottom: 3rem;
+.works-footer-cta:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-.icon-link {
-    width: 5rem;
-    height: 5rem;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.works-footer-text {
+    margin-top: -1rem;
+    font-size: 1rem;
+    color: var(--text-muted);
 }
-
-.icon-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.contact-icon {
-    width: 70%;
-    height: 100%;
-    object-fit: contain;
-}
-
 
 /* =========================================
-   8. MODAL / GALERIA FULLSCREEN
+   MODAL / GALERIA EM TELA CHEIA
    ========================================= */
 .modal-gallery {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-gallery.open {
+    opacity: 1;
 }
 
 .modal-content {
@@ -503,10 +258,15 @@ body.light-theme .darkmode:hover .lua {
     max-height: 90%;
     display: flex;
     flex-direction: column;
-    /* Coluna para o botão ficar embaixo da imagem */
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    transform: scale(0.92);
+    transition: transform 0.3s ease;
+}
+
+.modal-gallery.open .modal-content {
+    transform: scale(1);
 }
 
 .modal-image {
@@ -514,203 +274,137 @@ body.light-theme .darkmode:hover .lua {
     height: auto;
     max-width: 100vw;
     max-height: 80vh;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .close-modal {
     position: absolute;
-    top: -40px;
-    right: -40px;
-    font-size: 3rem;
+    top: -2.5rem;
+    right: -2.5rem;
+    font-size: 2rem;
     color: #fff;
     cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Botão dentro do Modal */
+.close-modal:hover {
+    transform: rotate(90deg) scale(1.15);
+    color: var(--accent);
+}
+
 .modal-visit-btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
-    background-color: white;
-    color: black;
+    padding: 0.7rem 1.75rem;
+    background: #fff;
+    color: #181818;
     text-decoration: none;
-    font-size: 1.5rem;
-    border-radius: 50px;
-    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    z-index: 10000;
-    text-align: center;
 }
 
 .modal-visit-btn:hover {
-    transform: scale(1.1);
-    background-color: #f0f0f0;
+    transform: scale(1.08);
+    background: #f0f0f0;
 }
 
-/* Navegação do Modal (Setas grandes) */
-.modal-navigation {
-    position: absolute;
+/* Setas do modal — fixas nas bordas da tela, independente do tamanho da imagem */
+.modal-nav-btn {
+    position: fixed;
     top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.prev,
-.next {
-    pointer-events: auto;
-    color: white;
-    font-size: 4rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
+    color: #fff;
+    border: 0.125rem solid rgba(255, 255, 255, 0.4);
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
     cursor: pointer;
-    padding: 0 20px;
+    z-index: 10001;
     user-select: none;
-    transition: transform 0.3s;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
 }
 
-.prev {
-    margin-left: -80px;
+.modal-nav-btn:hover {
+    background: #fff;
+    color: #181818;
+    border-color: #fff;
+    box-shadow: 0 0 1.25rem rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
 }
 
-.next {
-    margin-right: -80px;
+.modal-nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
-.prev:hover,
-.next:hover {
-    transform: scale(1.2);
+.modal-prev {
+    left: 2rem;
 }
 
+.modal-next {
+    right: 2rem;
+}
 
 /* =========================================
-   9. RESPONSIVIDADE (MOBILE / TABLET)
+   RESPONSIVIDADE
    ========================================= */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 56.25em) {
 
-    /* --- 1. HEADER MOBILE --- */
-    .header {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 15px 20px;
-        position: relative;
-    }
-
-    .nome {
-        order: 1;
-        padding: 0;
-        margin: 0;
-    }
-
-    .actions-container {
-        order: 2;
-        padding: 0;
-        margin: 0;
-        gap: 1rem;
-    }
-
-    .about {
-        position: static;
-        transform: none;
-        width: 100%;
-        order: 3;
-        justify-content: center;
-        padding: 0;
-        margin-top: 15px;
-        gap: 20px;
-    }
-
-    .nome h1 {
-        font-size: 1.5rem;
-    }
-
-    .about h1,
-    .darkmode h1 {
-        font-size: 1rem;
-    }
-
-    .lua {
-        width: 1.2rem;
-    }
-
-
-    /* --- 2. LAYOUT CARDS MOBILE --- */
-    .works-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
+    /* 900px */
+    .background-text {
+        min-height: auto;
+        padding-top: 5.5rem;
     }
 
     .work-card {
-        max-width: 90%;
-        /* Cartão ocupa quase toda a largura */
-        width: 100%;
+        max-width: 26rem;
     }
 
-    /* Aumenta imagem no mobile para facilitar swipe */
-    .carousel img {
-        height: 40vh;
-        /* Impede que o usuário selecione a imagem como texto ao arrastar */
-        user-select: none;
-        -webkit-user-drag: none;
+    .works-footer-cta {
+        padding: 2rem 1.5rem;
     }
 
-    /* --- 3. ESCONDER SETAS NO MOBILE (SWIPE ONLY) --- */
-    /* Importante: Esconde as setas dos cards E as setas do modal */
-    .carousel-btn,
-    .prev,
-    .next {
+    .carousel-btn {
         display: none !important;
     }
 
-    /* --- 4. AJUSTES GERAIS --- */
-    .title {
-        font-size: 4rem;
+    .modal-nav-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
     }
 
-    .arrow-bottom {
-        margin: 2rem auto;
+    .modal-prev {
+        left: 0.75rem;
     }
 
-    .icons-container {
-        margin-top: 1rem;
-        flex-wrap: wrap;
+    .modal-next {
+        right: 0.75rem;
     }
 
-    .icon-link {
-        width: 4rem;
-        height: 4rem;
-    }
-
-    /* --- 5. MODAL MOBILE --- */
     .close-modal {
-        right: 10px;
-        top: -50px;
-        font-size: 2.5rem;
+        right: 0.5rem;
+        top: -3rem;
+        font-size: 1.75rem;
     }
 
-    /* Aumenta a área da imagem para o swipe */
     .modal-image {
         max-width: 95vw;
         max-height: 60vh;
         object-fit: contain;
     }
 
-    /* Botão no modal */
     .modal-visit-btn {
-        font-size: 1.2rem;
-        padding: 0.8rem 2rem;
-        margin-top: 15px;
-    }
-}
-
-/* Telas muito pequenas */
-@media screen and (max-width: 380px) {
-    .header {
-        padding: 10px 15px;
-    }
-
-    .title {
-        font-size: 3rem;
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
     }
 }

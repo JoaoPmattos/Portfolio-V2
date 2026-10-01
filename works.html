@@ -5,15 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - João Pedro | Works</title>
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
+    <meta name="theme-color" content="#ff5c5c">
 
-    <link rel="stylesheet" href="./css/work.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/work.css">
 </head>
 
-<body>
+<body class="dark-theme">
+    <div class="aurora-bg" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="background-header">
         <div class="header">
             <a href="index.html" class="nome">
@@ -52,19 +62,27 @@
     </div>
 
     <div class="background-text">
-        <div class="title-container">
+        <div class="title-container" data-reveal>
             <h1 class="title">
                 <span class="lang-en">My Works</span>
                 <span class="lang-pt" style="display: none;">Meus Trabalhos</span>
             </h1>
         </div>
 
-        <div class="works-container">
+        <a href="#works-grid" class="scroll-indicator" aria-label="Scroll to projects">
+            <span class="scroll-mouse"><span class="scroll-dot"></span></span>
+            <span class="scroll-label">
+                <span class="lang-en">Scroll</span>
+                <span class="lang-pt" style="display: none;">Role</span>
+            </span>
+        </a>
 
-            <div class="work-card">
+        <div class="works-container" id="works-grid">
+
+            <div class="work-card glass" data-reveal>
                 <div class="carousel" data-gallery="portfolio">
-                    <button class="carousel-btn prev-btn">&#10094;</button>
-                    <button class="carousel-btn next-btn">&#10095;</button>
+                    <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn next-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
 
                     <img src="./src/firstPortfolio.png" alt="First Portfolio"
                         data-url="https://www.figma.com/proto/waEC27iJDYARuq4zOUA5nm/Portfolio--Atualizado-?t=BQZooocQI93o0V8q-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=22-48&starting-point-node-id=22%3A19">
@@ -81,16 +99,25 @@
                     <span class="lang-en">FIGMA Projects</span>
                     <span class="lang-pt" style="display: none;">Projetos no FIGMA</span>
                 </p>
-                <a href="#" target="_blank" class="visit-btn">
-                    <span class="lang-en">Visit Project</span>
-                    <span class="lang-pt" style="display: none;">Visitar Projeto</span>
+                <p class="work-details">
+                    <span class="lang-en">UI/UX prototypes in Figma — from login screens to full page layouts,
+                        focused on usability.</span>
+                    <span class="lang-pt" style="display: none;">Protótipos de UI/UX no Figma — de telas de login a
+                        páginas completas, com foco em usabilidade.</span>
+                </p>
+                <a href="#" target="_blank" class="btn-pill">
+                    <span class="btn-label">
+                        <span class="lang-en">Visit Project</span>
+                        <span class="lang-pt" style="display: none;">Visitar Projeto</span>
+                    </span>
+                    <span class="btn-arrow" aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
-            <div class="work-card">
+            <div class="work-card glass" data-reveal>
                 <div class="carousel" data-gallery="dashboard">
-                    <button class="carousel-btn prev-btn">&#10094;</button>
-                    <button class="carousel-btn next-btn">&#10095;</button>
+                    <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn next-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
 
                     <img src="./src/abra.png" alt="Dashboard">
                     <img src="./src/Charmander.png" alt="Dashboard">
@@ -101,51 +128,92 @@
                     <span class="lang-en">Dashboards in Grafana</span>
                     <span class="lang-pt" style="display: none;">Dashboards no Grafana</span>
                 </p>
+                <p class="work-details">
+                    <span class="lang-en">Monitoring and data-visualization dashboards built with Grafana.</span>
+                    <span class="lang-pt" style="display: none;">Dashboards de monitoramento e visualização de dados
+                        construídos no Grafana.</span>
+                </p>
 
-                <div class="visit-btn static-btn">
-                    <span class="lang-en">View Dashboard</span>
-                    <span class="lang-pt" style="display: none;">Ver Dashboard</span>
+                <div class="btn-pill static-btn">
+                    <span class="btn-label">
+                        <span class="lang-en">View Dashboard</span>
+                        <span class="lang-pt" style="display: none;">Ver Dashboard</span>
+                    </span>
                 </div>
             </div>
 
-            <div class="work-card">
+            <div class="work-card glass" data-reveal>
                 <div class="carousel" data-gallery="websites">
-                    <button class="carousel-btn prev-btn">&#10094;</button>
-                    <button class="carousel-btn next-btn">&#10095;</button>
+                    <button class="carousel-btn prev-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn next-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
 
                     <img src="./src/marvel WIKI2.png" alt="Marvel WIKI"
                         data-url="https://joaopmattos.github.io/SITE---Wiki-Marvel/">
                     <img src="./src/marvel WIKI3.png" alt="Marvel WIKI"
                         data-url="https://joaopmattos.github.io/SITE---Wiki-Marvel/">
+                    <img src="./src/page_odonto.png" alt="Odonto Clinic - Landing Page"
+                        data-url="https://joaopmattos.github.io/dentista-landpage/">
+                    <img src="./src/adv_page.png" alt="VLV Advogados - Landing Page"
+                        data-url="https://joaopmattos.github.io/advogados-landpage/">
                 </div>
                 <p class="work-description">
                     <span class="lang-en">Web Development Collection</span>
                     <span class="lang-pt" style="display: none;">Coleção de Desenvolvimento Web</span>
                 </p>
-                <a href="#" target="_blank" class="visit-btn">
-                    <span class="lang-en">Visit Website</span>
-                    <span class="lang-pt" style="display: none;">Visitar Site</span>
+                <p class="work-details">
+                    <span class="lang-en">Live, shipped websites — from a fan site to real landing pages for
+                        clients.</span>
+                    <span class="lang-pt" style="display: none;">Sites publicados e em produção — de um fã-site a
+                        páginas reais para clientes.</span>
+                </p>
+                <a href="#" target="_blank" class="btn-pill">
+                    <span class="btn-label">
+                        <span class="lang-en">Visit Website</span>
+                        <span class="lang-pt" style="display: none;">Visitar Site</span>
+                    </span>
+                    <span class="btn-arrow" aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
         </div>
 
-        <div class="arrow-bottom">↓</div>
+        <div class="works-footer-cta glass" data-reveal>
+            <h2 class="section-title">
+                <span class="lang-en">Let's Connect</span>
+                <span class="lang-pt" style="display: none;">Vamos nos Conectar</span>
+            </h2>
+            <p class="works-footer-text">
+                <span class="lang-en">Have a project in mind? Reach out through any of these.</span>
+                <span class="lang-pt" style="display: none;">Tem um projeto em mente? Me chame por qualquer um
+                    desses.</span>
+            </p>
 
-        <div class="contact-container">
             <div class="icons-container">
-                <a href="mailto:joaopedro272004@hotmail.com" target="_blank" class="icon-link"><img
-                        src="./icons/email.svg" alt="Email" class="contact-icon"></a>
-                <a href="https://wa.me/5516997639135" target="_blank" class="icon-link"><img src="./icons/whatsapp.svg"
-                        alt="WhatsApp" class="contact-icon"></a>
-                <a href="https://github.com/JoaoPmattos" target="_blank" class="icon-link"><img src="./icons/github.svg"
-                        alt="GitHub" class="contact-icon"></a>
-                <a href="https://www.linkedin.com/in/jo%C3%A3opereiraa/" target="_blank" class="icon-link"><img
-                        src="./icons/linkedin.svg" alt="LinkedIn" class="contact-icon"></a>
+                <div class="icon-group">
+                    <a href="mailto:joaopedro272004@hotmail.com" target="_blank" class="icon-link"><img
+                            src="./icons/email.svg" alt="Email" class="contact-icon"></a>
+                    <span class="icon-label">Email</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://wa.me/5516997639135" target="_blank" class="icon-link"><img
+                            src="./icons/whatsapp.svg" alt="WhatsApp" class="contact-icon"></a>
+                    <span class="icon-label">WhatsApp</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://github.com/JoaoPmattos?tab=repositories" target="_blank" class="icon-link"><img
+                            src="./icons/github.svg" alt="GitHub" class="contact-icon"></a>
+                    <span class="icon-label">GitHub</span>
+                </div>
+                <div class="icon-group">
+                    <a href="https://www.linkedin.com/in/jo%C3%A3opereiraa/" target="_blank" class="icon-link"><img
+                            src="./icons/linkedin.svg" alt="LinkedIn" class="contact-icon"></a>
+                    <span class="icon-label">LinkedIn</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="JavaScriptMain.js"></script>
     <script src="JavaScriptWorks.js"></script>
 </body>
 

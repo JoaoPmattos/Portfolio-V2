@@ -1,562 +1,75 @@
-/* =========================================
-   RESET E CONFIGURAÇÕES GERAIS
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    /* ESSENCIAL: Impede que padding quebre o layout */
-    box-sizing: border-box;
-}
+/* =========================================================
+   CONTACT.CSS
+   Reset, tema, navbar e a seção de conteúdo padrão já vêm do
+   base.css — aqui só o cartão de vidro específico da página.
+   ========================================================= */
 
-/* Estilo geral para o corpo e HTML */
-body,
-html {
+.contact-card {
     width: 100%;
-    height: 100%;
-    color: white;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    overflow-x: hidden;
-}
-
-/* =========================================
-   TEMAS (DARK / LIGHT)
-   ========================================= */
-body.dark-theme {
-    background-color: rgb(24, 23, 23);
-    color: white;
-}
-
-body.dark-theme .about h1.active,
-body.dark-theme .nome h1.active {
-    color: white;
-}
-
-body.dark-theme .about h1.active::after,
-body.dark-theme .nome h1.active::after {
-    background-color: white;
-}
-
-body.dark-theme .about h1:hover::after,
-body.dark-theme .nome h1:hover::after {
-    background-color: white;
-    width: 100%;
-    transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-body.dark-theme .header {
-    background-color: rgb(24, 23, 23);
-}
-
-body.dark-theme .background-text {
-    background-color: rgb(24, 23, 23);
-}
-
-body.dark-theme .title,
-body.dark-theme .subtitle {
-    color: white;
-}
-
-body.light-theme {
-    color: black;
-}
-
-body.light-theme .about h1.active,
-body.light-theme .nome h1.active {
-    color: black;
-}
-
-body.light-theme .about h1.active::after,
-body.light-theme .nome h1.active::after {
-    background-color: black;
-}
-
-body.light-theme .about h1:hover::after,
-body.light-theme .nome h1:hover::after {
-    background-color: black;
-    width: 100%;
-    transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-body.light-theme .header {
-    background-color: #D2D2D2;
-}
-
-body.light-theme .nome,
-body.light-theme .darkmode,
-body.light-theme .title,
-body.light-theme .subtitle {
-    color: black;
-}
-
-body.light-theme .background-text {
-    background-color: #D2D2D2;
-}
-
-
-/* =========================================
-   CABEÇALHO (DESKTOP)
-   ========================================= */
-.header {
-    width: 100%;
-    height: auto;
-    background-color: rgb(24, 23, 23);
-    display: flex;
-    align-items: center;
-}
-
-.nome {
-    margin-right: auto;
-    padding: 2rem;
-    color: white;
-    text-decoration: none;
-    display: flex;
-}
-
-.about {
-    margin: 0 auto;
-    display: flex;
-    padding: 2rem;
-    gap: 1rem;
-}
-
-.about h1 a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.about h1,
-.nome h1 {
-    position: relative;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.about h1::after,
-.nome h1::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease;
-}
-
-.about h1:hover::after,
-.nome h1:hover::after,
-.about h1.active::after,
-.nome h1.active::after {
-    width: 100%;
-}
-
-.about h1.active,
-.nome h1.active {
-    color: white;
-}
-
-.darkmode {
-    display: flex;
-    margin-left: auto;
-    padding: 2rem;
-    color: white;
-    gap: 1rem;
-    align-items: center;
-}
-
-.darkmode h1 {
-    position: relative;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.darkmode h1::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease;
-}
-
-.darkmode h1:hover::after,
-.darkmode h1.dark-active::after {
-    width: 100%;
-}
-
-.darkmode h1.dark-active {
-    color: white;
-}
-
-.lua {
-    width: 2rem;
-    height: auto;
-}
-
-
-/* =========================================
-   CONTEÚDO PRINCIPAL (DESKTOP)
-   ========================================= */
-.background-text {
-    width: 100%;
-    min-height: 100vh;
-    /* Garante que cubra a tela toda */
+    max-width: 40rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(24, 23, 23);
-    padding-bottom: 2rem;
-    /* Espaço no final */
-}
-
-/* Título e Texto */
-.title-container {
+    gap: 2.25rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
     text-align: center;
-    /* margin-bottom: auto; */
-    /* Empurra o resto para baixo no desktop */
-    width: 100%;
-    padding: 0 1rem;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.title {
-    margin-top: 10rem;
-    font-size: 15rem;
-    /* Fonte original gigante */
-    font-weight: bold;
-    color: white;
-    line-height: 1;
+.contact-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-card .title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
 }
 
 .texto {
-    font-size: 2rem;
-    max-width: 60%;
-    /* Limita a largura para leitura */
-    margin: 0 auto;
+    margin-top: 1rem;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--text-muted);
 }
 
-/* Social Call to Action */
 .textoSocial {
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 4rem;
-}
-
-.arrow-down {
-    font-size: 2rem;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(10px);
-    }
-}
-
-/* Ícones */
-.contact-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 4rem;
-    /* Espaço final */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: border-color 0.4s ease, color 0.3s ease, letter-spacing 0.3s ease;
 }
 
-.icons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2rem;
+.contact-card:hover .textoSocial {
+    border-color: var(--accent);
+    color: var(--text-color);
+    letter-spacing: 0.08em;
 }
 
-.icon-link {
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255);
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-}
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+@media screen and (max-width: 56.25em) {
 
-.icon-link:hover {
-    transform: scale(1.2);
-}
-
-.contact-icon {
-    width: 70%;
-    height: 100%;
-    object-fit: contain;
-}
-
-
-/* =========================================
-   RESPONSIVIDADE (MOBILE E TABLET)
-   ========================================= */
-@media screen and (max-width: 900px) {
-
-    /* --- 1. Header estilo App (Igual Works/Home) --- */
-    .header {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 15px 20px;
-    }
-
-    .nome {
-        order: 1;
-        padding: 0;
-        margin: 0;
-    }
-
-    .darkmode {
-        order: 2;
-        padding: 0;
-        margin: 0;
-        gap: 8px;
-    }
-
-    .about {
-        width: 100%;
-        order: 3;
-        justify-content: center;
-        padding: 0;
-        margin-top: 15px;
-        gap: 20px;
-    }
-
-    .nome h1 {
-        font-size: 1.5rem;
-    }
-
-    .about h1,
-    .darkmode h1 {
-        font-size: 1rem;
-    }
-
-    .lua {
-        width: 1.2rem;
-    }
-
-
-    /* --- 2. Conteúdo Principal Mobile --- */
+    /* 900px — ancora o card no topo em vez de centralizar num bloco de
+       100vh: evita a folga vazia entre a navbar e o card, que obrigava
+       a rolar a página sem necessidade */
     .background-text {
-        height: auto;
-        min-height: 100vh;
-        justify-content: center;
-        /* Centraliza verticalmente se o conteúdo for curto */
+        min-height: auto;
+        justify-content: flex-start;
+        padding-top: 7rem;
     }
 
-    .title-container {
-        margin-bottom: 2rem;
-        /* Remove margem auto para não espaçar demais */
+    .contact-card {
+        gap: 1.75rem;
+        padding: 2rem 1.5rem;
     }
-
-    .title {
-        margin-top: 2rem;
-        /* Reduz espaço do topo */
-        font-size: 5rem;
-        /* Fonte ajustada para celular */
-    }
-
-    .texto {
-        font-size: 1.2rem;
-        max-width: 90%;
-        /* Texto ocupa mais largura da tela */
-        line-height: 1.4;
-    }
-
-    .textoSocial {
-        font-size: 1.5rem;
-        margin-top: 3rem;
-    }
-
-    /* --- 3. Ícones Mobile --- */
-    .icons-container {
-        flex-wrap: wrap;
-        /* Ícones quebram linha se não couberem */
-        gap: 1.5rem;
-        margin-top: 1rem;
-    }
-
-    .icon-link {
-        width: 4rem;
-        /* Ícones um pouco menores */
-        height: 4rem;
-    }
-}
-
-/* Telas muito pequenas */
-@media screen and (max-width: 380px) {
-    .header {
-        padding: 10px 15px;
-    }
-
-    .title {
-        font-size: 4rem;
-    }
-}
-
-
-/* ... (MANTENHA O RESET E BODY/HTML ORIGINAL) ... */
-
-/* =========================================
-   ESTILOS PARA IDIOMA E ALINHAMENTO (CIRCULAR)
-   ========================================= */
-.actions-container {
-    display: flex;
-    margin-left: auto;
-    align-items: center;
-    gap: 1rem;
-    padding-right: 2rem;
-}
-
-.language-toggle,
-.darkmode {
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid currentColor;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-}
-
-.language-toggle h1 {
-    font-size: 1.2rem;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-}
-
-.lua {
-    width: 1.2rem;
-    height: auto;
-    transition: filter 0.3s ease;
-}
-
-.language-toggle:hover,
-.darkmode:hover {
-    transform: scale(1.1);
-}
-
-/* --- AJUSTES POR TEMA --- */
-/* Dark Mode */
-body.dark-theme .language-toggle,
-body.dark-theme .darkmode {
-    color: white;
-    border-color: white;
-}
-
-body.dark-theme .language-toggle:hover,
-body.dark-theme .darkmode:hover {
-    background-color: white;
-    color: rgb(24, 23, 23);
-}
-
-body.dark-theme .darkmode:hover .lua {
-    filter: invert(1);
-}
-
-/* Light Mode */
-body.light-theme .language-toggle,
-body.light-theme .darkmode {
-    color: black;
-    border-color: black;
-}
-
-body.light-theme .language-toggle:hover,
-body.light-theme .darkmode:hover {
-    background-color: black;
-    color: white;
-}
-
-body.light-theme .darkmode:hover .lua {
-    filter: invert(1);
-}
-
-/* =========================================
-   CABEÇALHO
-   ========================================= */
-.header {
-    width: 100%;
-    height: auto;
-    background-color: rgb(24, 23, 23);
-    display: flex;
-    align-items: center;
-}
-
-.nome {
-    margin-right: auto;
-    padding: 2rem;
-    color: white;
-    text-decoration: none;
-    display: flex;
-}
-
-.about {
-    /* Centraliza o menu (truque do margin auto) */
-    position: sticky;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 1rem;
-}
-
-/* ... (MANTENHA OS EFEITOS DE HOVER DO MENU AQUI) ... */
-
-/* =========================================
-   RESPONSIVIDADE (MOBILE)
-   ========================================= */
-@media screen and (max-width: 900px) {
-    .header {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 15px 20px;
-        position: relative;
-    }
-
-    .nome {
-        order: 1;
-        margin: 0;
-        padding: 0;
-    }
-
-    .actions-container {
-        order: 2;
-        margin: 0;
-        padding: 0;
-        gap: 1rem;
-    }
-
-    .about {
-        position: static;
-        transform: none;
-        width: 100%;
-        order: 3;
-        justify-content: center;
-        margin-top: 15px;
-    }
-
-    /* ... (Restante do CSS Mobile) ... */
 }

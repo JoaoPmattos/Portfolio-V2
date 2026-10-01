@@ -5,14 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - João Pedro</title>
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
+    <meta name="theme-color" content="#ff5c5c">
 
-    <link rel="stylesheet" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
-<body>
+<body class="dark-theme">
+    <div class="aurora-bg" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="background-header">
         <div class="header">
             <a href="index.html" class="nome">
@@ -52,14 +62,14 @@
     </div>
 
     <div class="background-text">
-        <div class="title-container">
+        <div class="title-container" data-reveal>
             <h1 class="title">
                 <span class="lang-en">Digital Designer</span>
                 <span class="lang-pt" style="display: none;">Designer Digital</span>
             </h1>
         </div>
 
-        <div class="subtitle-container">
+        <div class="subtitle-container" data-reveal>
             <p class="subtitle" id="animated-text-en">
                 Specialized in Web Design, UX/UI, and Front End Development.
             </p>
@@ -67,8 +77,17 @@
                 Especializado em Web Design, UX/UI e Desenvolvimento Front End.
             </p>
         </div>
+
+        <div class="hero-actions" data-reveal>
+            <a href="works.html" class="btn-pill">
+                <span class="lang-en">See my work</span>
+                <span class="lang-pt" style="display: none;">Ver meus projetos</span>
+                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
     </div>
 
+    <script src="JavaScriptMain.js"></script>
     <script src="JavaScriptHome.js"></script>
 </body>
 

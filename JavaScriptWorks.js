@@ -1,59 +1,9 @@
-// --- VARIÁVEIS GERAIS ---
-const darkModeBtn = document.querySelector(".darkmode");
-const themeIcon = document.getElementById("theme-icon");
-const body = document.body;
-
-// Variáveis de Idioma
-const langBtn = document.querySelector(".language-toggle h1");
-const langToggleDiv = document.querySelector(".language-toggle");
-const enTexts = document.querySelectorAll(".lang-en");
-const ptTexts = document.querySelectorAll(".lang-pt");
-
-// --- INICIALIZAÇÃO DO TEMA ---
-function initializeTheme() {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-        body.classList.remove("dark-theme");
-        body.classList.add("light-theme");
-        themeIcon.src = "./icons/sun.svg";
-    } else {
-        body.classList.remove("light-theme");
-        body.classList.add("dark-theme");
-        themeIcon.src = "./icons/moon.svg";
-        if (!savedTheme) localStorage.setItem("theme", "dark");
-    }
-}
-initializeTheme();
-
-// --- ALTERNAR TEMA ---
-darkModeBtn.addEventListener("click", () => {
-    if (body.classList.contains("dark-theme")) {
-        body.classList.remove("dark-theme");
-        body.classList.add("light-theme");
-        themeIcon.src = "./icons/sun.svg";
-        localStorage.setItem("theme", "light");
-    } else {
-        body.classList.remove("light-theme");
-        body.classList.add("dark-theme");
-        themeIcon.src = "./icons/moon.svg";
-        localStorage.setItem("theme", "dark");
-    }
-});
-
-// --- ALTERNAR IDIOMA ---
-langToggleDiv.addEventListener("click", () => {
-    const isEnglish = langBtn.textContent === "BR";
-    if (isEnglish) {
-        langBtn.textContent = "EN";
-        enTexts.forEach(el => el.style.display = "none");
-        ptTexts.forEach(el => el.style.display = "inline");
-    } else {
-        langBtn.textContent = "BR";
-        ptTexts.forEach(el => el.style.display = "none");
-        enTexts.forEach(el => el.style.display = "inline");
-    }
-});
-
+// =========================================================
+// JavaScriptWorks.js
+// Carrossel dos cards (setas + dots + swipe) e o modal/galeria
+// em tela cheia. Tema, idioma, menu ativo e a animação de
+// entrada dos cards (via [data-reveal]) ficam em JavaScriptMain.js.
+// =========================================================
 
 // --- LÓGICA DO CARROSSEL (BOTÕES + SWIPE) ---
 const carousels = document.querySelectorAll('.carousel');
@@ -64,18 +14,39 @@ carousels.forEach(carousel => {
     const nextBtn = carousel.querySelector('.next-btn');
     let currentIndex = 0;
 
+    // --- INDICADORES (DOTS) ---
+    let dots = [];
+    if (images.length > 1) {
+        const dotsContainer = document.createElement('div');
+        dotsContainer.classList.add('carousel-dots');
+
+        images.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dot.type = 'button';
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = i;
+                showImage(currentIndex);
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        carousel.appendChild(dotsContainer);
+        dots = Array.from(dotsContainer.children);
+    }
+
     // --- FUNÇÃO PARA MOSTRAR IMAGEM E ATUALIZAR LINK ---
     const showImage = (index) => {
-        // Esconde todas
-        images.forEach(img => img.style.display = 'none');
-
-        // Mostra a atual
-        const currentImg = images[index];
-        currentImg.style.display = 'block';
+        // Faz o crossfade entre as imagens
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
 
         // Atualiza o link do botão "Visitar Site" principal do Card
+        const currentImg = images[index];
         const card = carousel.closest('.work-card');
-        const visitBtn = card.querySelector('.visit-btn');
+        const visitBtn = card.querySelector('a.btn-pill');
         const newUrl = currentImg.getAttribute('data-url');
 
         if (visitBtn && newUrl) {
@@ -144,6 +115,25 @@ document.body.appendChild(modal);
 let currentGallery = [];
 let currentModalIndex = 0;
 
+// --- NAVEGAÇÃO POR SWIPE NO MODAL (MOBILE) ---
+let modalTouchStartX = 0;
+let modalTouchEndX = 0;
+
+modal.addEventListener('touchstart', (e) => {
+    modalTouchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+modal.addEventListener('touchend', (e) => {
+    modalTouchEndX = e.changedTouches[0].screenX;
+    if (modalTouchEndX < modalTouchStartX - 50) {
+        currentModalIndex = (currentModalIndex + 1) % currentGallery.length;
+        updateModal();
+    } else if (modalTouchEndX > modalTouchStartX + 50) {
+        currentModalIndex = (currentModalIndex - 1 + currentGallery.length) % currentGallery.length;
+        updateModal();
+    }
+}, { passive: true });
+
 function openModalSegmented(group, clickedSrc) {
     // Mapeia as imagens pegando o SRC e o DATA-URL
     currentGallery = Array.from(document.querySelectorAll(`[data-gallery="${group}"] img`)).map(img => ({
@@ -157,6 +147,8 @@ function openModalSegmented(group, clickedSrc) {
 
     updateModal();
     modal.style.display = 'flex';
+    // Aguarda o próximo frame para o CSS animar a transição de abertura
+    requestAnimationFrame(() => modal.classList.add('open'));
 }
 
 function updateModal() {
@@ -175,17 +167,16 @@ function updateModal() {
     <div class="modal-content">
       <span class="close-modal">&times;</span>
       <img src="${currentItem.src}" class="modal-image">
-      ${buttonHtml} <div class="modal-navigation">
-        <span class="prev">&lt;</span>
-        <span class="next">&gt;</span>
-      </div>
+      ${buttonHtml}
     </div>
+    <button type="button" class="modal-nav-btn modal-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <button type="button" class="modal-nav-btn modal-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
   `;
 
     // Re-adiciona os eventos pois o HTML foi reescrito
     modal.querySelector('.close-modal').addEventListener('click', closeModal);
-    modal.querySelector('.next').addEventListener('click', nextImageModal);
-    modal.querySelector('.prev').addEventListener('click', prevImageModal);
+    modal.querySelector('.modal-next').addEventListener('click', nextImageModal);
+    modal.querySelector('.modal-prev').addEventListener('click', prevImageModal);
 
     // Fecha o modal se clicar fora da imagem
     modal.addEventListener('click', (e) => {
@@ -194,7 +185,8 @@ function updateModal() {
 }
 
 function closeModal() {
-    modal.style.display = 'none';
+    modal.classList.remove('open');
+    setTimeout(() => { modal.style.display = 'none'; }, 300);
 }
 
 function nextImageModal(e) {
